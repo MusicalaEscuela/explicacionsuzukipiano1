@@ -148,7 +148,7 @@ export default function App() {
       <header className="app-header">
         <div className="header-container">
           <div className="header-logo" onClick={() => { setCurrentView('home'); setSelectedStageId(null); setSelectedPieceId(null); }} style={{ cursor: 'pointer' }}>
-            <img src="/assets/logo.png" alt="Musicala Logo" className="header-logo-img" />
+            <img src={`${import.meta.env.BASE_URL}assets/logo.png`} alt="Musicala Logo" className="header-logo-img" />
             <div className="logo-text">Ruta Suzuki <span className="logo-sub">Piano I</span></div>
           </div>
 
@@ -236,7 +236,7 @@ export default function App() {
               </div>
               <div className="hero-illustration-container">
                 <img 
-                  src="/assets/illustrations/hero_piano_journey.png" 
+                  src={`${import.meta.env.BASE_URL}assets/illustrations/hero_piano_journey.png`} 
                   alt="Estudiante frente al piano con una ruta de notas musicales flotantes" 
                   className="hero-img"
                 />
@@ -644,7 +644,7 @@ export default function App() {
 
             <div className="before-card" style={{ backgroundColor: 'white', border: '1px solid var(--color-border)', flexDirection: 'row', gap: '20px', alignItems: 'center' }}>
               <img 
-                src="/assets/illustrations/family_practice.png" 
+                src={`${import.meta.env.BASE_URL}assets/illustrations/family_practice.png`} 
                 alt="Familia practicando piano feliz"
                 style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '12px' }} 
               />
