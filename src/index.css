@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&family=Sacramento&display=swap');
+
+:root {
+  /* ==========================================================
+     Paleta oficial Musicala — Manual de marca 2026, págs. 18-19
+     ========================================================== */
+
+  /* Secundarios: fondos y textos */
+  --bg-warm: #F9F9F9;        /* Blanco Debussy */
+  --bg-card: #FFFFFF;
+  --text-dark: #232323;      /* Gris Tchaikovsky — párrafos y textos largos */
+  --text-muted: #5A5A5A;
+  --text-light: #8A8A8A;
+
+  /* Primarios */
+  --color-bach: #220A63;     /* Azul Bach — texto del logo */
+  --color-mozart: #0C41C4;   /* Azul Mozart */
+  --color-beethoven: #680DBF;/* Violeta Beethoven */
+  --color-vivaldi: #5729FF;  /* Violeta Vivaldi */
+  --color-brahms: #CE0071;   /* Magenta Brahms */
+
+  /* Alias semánticos (mantienen la API de estilos existente) */
+  --color-blue: var(--color-bach);
+  --color-blue-light: #ECE9F5;
+  --color-blue-hover: var(--color-mozart);
+
+  --color-magenta: var(--color-brahms);
+  --color-magenta-light: #FBE6F1;
+  --color-magenta-hover: #A3005A;
+
+  --color-border: #E6E8E8;   /* Gris Haydn */
+  --color-focus: var(--color-mozart);
+  
+  /* Progress Colors */
+  --color-status-unexplored: #8A8580;
+  --color-status-discovering: #FFA726;
+  --color-status-practicing: #29B6F6;
+  --color-status-help: #AB47BC;
+  --color-status-success: #66BB6A;
+  --color-status-improving: #26A69A;
+  
+  /* Tipografía oficial — Manual de marca 2026, págs. 13-16
+     Roboto es la familia principal; Calibri es el sustituto digital.
+     Sacramento sólo para títulos cortos destacados (mín. 62pt, sólo minúsculas). */
+  --font-title: 'Roboto', Calibri, sans-serif;
+  --font-body: 'Roboto', Calibri, sans-serif;
+  --font-display: 'Sacramento', cursive;
+  
+  /* Shadow & Radii */
+  --shadow-sm: 0 2px 8px rgba(30, 28, 26, 0.04);
+  --shadow-md: 0 8px 24px rgba(30, 28, 26, 0.06);
+  --shadow-lg: 0 12px 32px rgba(30, 28, 26, 0.08);
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  
+  /* Layout */
+  --max-width: 1200px;
+}
+
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-warm);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45; /* Manual pág. 16: 11pt / interlineado 16pt */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  color: var(--color-bach);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Título destacado en Sacramento.
+   Manual pág. 15: tamaño mínimo 62pt, SÓLO minúsculas, nunca para números.
+   Su subtítulo debe ir en Roboto Thin (.display-subtitle). */
+.display-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.9rem, 8vw, 5.5rem); /* ~62pt como piso */
+  font-weight: 400;
+  text-transform: lowercase;
+  color: var(--color-bach);
+  line-height: 1.1;
+}
+
+.display-subtitle {
+  font-family: var(--font-title);
+  font-weight: 100; /* Roboto Thin */
+  font-size: 1.5rem; /* 24pt */
+  color: var(--color-beethoven);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Accessibility: Focus styles */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Global Layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.flex { display: flex; }
+.grid { display: grid; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-warm);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-light);
+}
+
+/* Media Queries for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
